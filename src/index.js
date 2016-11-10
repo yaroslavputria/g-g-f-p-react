@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App.jsx';
 import ReactTutorial from './ReactTutorial';
+import {Test1} from './Test1';
 import './index.css';
 
 ReactDOM.render(
@@ -14,3 +15,7 @@ ReactDOM.render(
   document.getElementById('secondRoot')
 );
 
+ReactDOM.render(
+  <Test1 />,
+  document.getElementById('test1')
+);
