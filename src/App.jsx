@@ -50,24 +50,55 @@ class Form extends Component {
   constructor(props) {
     super(props);
     this.processForm = this.processForm.bind(this);
-
+    this.state = {nameValue: '', emailValue:'', sexValue: ''};
+    this.handleChange = this.handleChange.bind(this);
   }
   processForm(e) {
     e.preventDefault();
-    console.dir(this);
+    console.dir(e.target.form);
     ReactDOM.render(
       <DataSent />,
       document.querySelector('#resMes')
     );
   };
+  handleChange(e) {
+    if (e.target.type === 'text') {
+      this.setState({nameValue: e.target.value});
+    } else if (e.target.type === 'email') {
+      this.setState({emailValue: e.target.value});
+    } else if (e.target.type === 'radio') {
+      this.setState({sexValue: e.target.value});
+    }
+  }
   render() {
     return (
-      <form >
-        <p>Name: <input type="text" name="name" placeholder={this.props.namePlaceholder}/></p>
-        <p>Email: <input type="email" name="email"/></p>
-        <p><input type="radio" name="sex" value="male" defaultChecked/>Male</p>
-        <p><input type="radio" name="sex" value="female"/>Female</p>
-        <p><button type="submit" onClick={this.processForm}>Send</button></p>
+      <form onChange={this.handleChange}>
+        <p>Name: <input
+          type="text"
+          name="name"
+          placeholder={this.props.namePlaceholder}
+          value={this.state.nameValue}
+        /></p>
+        <p>Email: <input
+          type="email"
+          name="email"
+          value={this.state.emailValue}
+        /></p>
+        <p><input
+          type="radio"
+          name="sex"
+          value="male"
+          defaultChecked={true}
+        />Male</p>
+        <p><input
+          type="radio"
+          name="sex"
+          value="female"
+        />Female</p>
+        <p><button
+          type="submit"
+          onClick={this.processForm}
+        >Send</button></p>
         <p id="resMes"><DataNotSent/></p>
       </form>
     );
@@ -75,11 +106,11 @@ class Form extends Component {
 }
 
 function DataSent(props) {
-  return <span>Data was sent</span>;
+  return <span>Data was sent!</span>;
 }
 
 function DataNotSent(props) {
-  return <span>Data wasnt sent yet</span>;
+  return <span>Data wasnt sent yet!</span>;
 }
 
 export default App;
