@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 //import ReactDOM from 'react-dom';
+import {Test1} from './Test1';
 
 class ReactTutorial extends Component {
   constructor(props) {
@@ -19,6 +20,7 @@ class ReactTutorial extends Component {
         <ul>{this.listItems}</ul>
         <Calculator />
         <Greeting isLoggedIn={true} />
+        <Test1>dich</Test1>
       </div>
     );
   }
