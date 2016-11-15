@@ -11,7 +11,7 @@ class Test1 extends React.Component {
   onH1ClickHandler(e) {
     console.dir(this.props.children);
     this.setState((prevState, props) => ({
-      dish: prevState.dish + ' AND WITH FUCKING SUGER!'
+      dish: prevState.dish + ' AND WITH FUCKING SUGER!!!'
     }));
   }
   render() {
