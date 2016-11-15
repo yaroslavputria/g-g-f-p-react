@@ -13,6 +13,16 @@ class RefComp extends React.Component {
     this.textInput.focus();
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    if (this.props.color !== nextProps.color) {
+      return true;
+    }
+    if (this.state.count !== nextState.count) {
+      return true;
+    }
+    return false;
+  }
+
   render() {
     return (
       <div>
@@ -30,7 +40,7 @@ class RefComp extends React.Component {
   }
 }
 
-class NameForm extends React.Component {
+class NameForm extends React.PureComponent {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -43,7 +53,7 @@ class NameForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}   style={{margin:'15px'}}>
+      <form onSubmit={this.handleSubmit} style={{margin:'15px'}}>
         Name:
         <input type="text" defaultValue="Bob" ref={(input) => this.input = input} />
         <input type="submit" value="Submit" />
